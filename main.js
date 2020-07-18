@@ -33,18 +33,26 @@ app.on('activate', () => {
     }
 })
 
-const menu = [{
+const menu = [
     ...(isMac ? [{ role: 'appMenu' }] : []),
 
-    label: 'File',
-    submenu: [
+    {
+        role: 'fileMenu'
+    },
+    ...(isDev ? [
         {
-            label: 'Quit',
-            accelator: 'CmdOrCtrl+W',
-            click: () => app.quit()
+            label: 'Developer',
+            submenu: [
+                
+                    {role: 'reload'},
+                    {role:'forcereload'},
+                    {role:'separator' },
+                    {role:'toggledevtools'}
+                
+            ]
         }
-    ]
-}]
+    ] : [])
+]
 
 
 app.on('ready', () => {
@@ -53,5 +61,6 @@ app.on('ready', () => {
     Menu.setApplicationMenu(mainMenu)
 
     globalShortcut.register('CmdOrCtrl+R', () => mainWindow.reload())
+    globalShortcut.register(isMac ? 'Command+Alt+i' : 'Ctrl+Shift+I', () => mainWindow.toggleDevTools())
     mainWindow.on('closed', () => mainWindow = null)
 })
