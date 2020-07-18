@@ -28,10 +28,9 @@ function createAboutWindow() {
         height: 300,
         icon: `${__dirname}/assets/icons/Icon_256x256.png`,
         resizable: false,
-        backgroundColor:white,
     })
 
-    aboutWindow.loadFile('./app/index.html')
+    aboutWindow.loadFile('./app/about.html')
 }
 
 
@@ -48,29 +47,39 @@ app.on('activate', () => {
 })
 
 const menu = [
-    ...(isMac ? [{ 
-        label:app.name,
-        submenu:[
+    ...(isMac ? [{
+        label: app.name,
+        submenu: [
             {
-             label: 'About',
-             click: createAboutWindow   
+                label: 'About',
+                click: createAboutWindow
             }
         ]
-     }] : []),
+    }] : []),
 
     {
         role: 'fileMenu'
     },
+
+    ...(!isMac ? [{
+        label: 'help',
+        submenu: [
+            {
+                label: 'About',
+                click: createAboutWindow
+            }
+        ]
+    }] : []),
     ...(isDev ? [
         {
             label: 'Developer',
             submenu: [
-                
-                    {role: 'reload'},
-                    {role:'forcereload'},
-                    {role:'separator' },
-                    {role:'toggledevtools'}
-                
+
+                { role: 'reload' },
+                { role: 'forcereload' },
+                { role: 'separator' },
+                { role: 'toggledevtools' }
+
             ]
         }
     ] : [])
@@ -83,3 +92,4 @@ app.on('ready', () => {
     Menu.setApplicationMenu(mainMenu)
     mainWindow.on('closed', () => mainWindow = null)
 })
+Image
