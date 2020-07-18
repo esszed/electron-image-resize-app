@@ -1,0 +1,22 @@
+{
+  "name": "resize",
+  "version": "1.0.0",
+  "description": "App to resize images",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/esszed/electron-image-resize-app.git"
+  },
+  "author": "Štěpán Zoubek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/esszed/electron-image-resize-app/issues"
+  },
+  "homepage": "https://github.com/esszed/electron-image-resize-app#readme",
+  "devDependencies": {
+    "electron": "^9.1.0"
+  }
+}
