@@ -1,9 +1,9 @@
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow, Menu, globalShortcut } = require('electron')
 
 //Set env
 process.env.NODE_ENV = 'development'
 const isDev = process.env.NODE_ENV !== 'production' ? true : false
-const isMac = process.platform === 'linux' ? true : false
+const isMac = process.platform === 'darwin' ? true : false
 
 
 
@@ -34,18 +34,24 @@ app.on('activate', () => {
 })
 
 const menu = [{
-    label:'File',
-    submenu:[
+    ...(isMac ? [{ role: 'appMenu' }] : []),
+
+    label: 'File',
+    submenu: [
         {
-            label:'Quit',
-            click:()=>app.quit()
+            label: 'Quit',
+            accelator: 'CmdOrCtrl+W',
+            click: () => app.quit()
         }
     ]
 }]
+
 
 app.on('ready', () => {
     createMainWindow()
     const mainMenu = Menu.buildFromTemplate(menu)
     Menu.setApplicationMenu(mainMenu)
+
+    globalShortcut.register('CmdOrCtrl+R', () => mainWindow.reload())
     mainWindow.on('closed', () => mainWindow = null)
 })
