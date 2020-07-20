@@ -19,5 +19,11 @@
   "homepage": "https://github.com/esszed/electron-image-resize-app#readme",
   "devDependencies": {
     "electron": "^9.1.0"
+  },
+  "dependencies": {
+    "imagemin": "^7.0.1",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.0",
+    "slash": "^3.0.0"
   }
 }
