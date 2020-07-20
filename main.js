@@ -92,4 +92,3 @@ app.on('ready', () => {
     Menu.setApplicationMenu(mainMenu)
     mainWindow.on('closed', () => mainWindow = null)
 })
-Image
