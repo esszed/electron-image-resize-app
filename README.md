@@ -2,7 +2,7 @@
 
 
 Run packaging scripts: 
-npm run package-mac
-npm run package-win
-npm run package-linux
+- npm run package-mac
+- npm run package-win
+- npm run package-linux
 
