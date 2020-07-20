@@ -1,4 +1,4 @@
-#Electron app for resizing images
+# Electron app for resizing images
 
 
 Run packaging scripts: 
