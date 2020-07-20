@@ -8,15 +8,21 @@ const slider = document.getElementById('slider')
 const img = document.getElementById('img')
 
 
-//Onsubmit
+//On submit
 form.addEventListener('submit', e => {
     e.preventDefault()
-
     const imgPath = img.files[0].path
     const quality = slider.value
     ipcRenderer.send('image:minimize', {
         imgPath,
         quality,
+    })
+})
+
+//On done
+ipcRenderer.on('image:done', () => {
+    M.toast({
+        html: `Image resized to ${slider.value}% quality`
     })
 })
 
